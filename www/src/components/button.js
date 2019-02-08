@@ -9,8 +9,8 @@ const Button = ({ children, ...props }) => (
         align-items: center;
         color: #fff;
         background: #000;
-        width: 100px;
-        height: 24px;
+        width: 150px;
+        height: 30px;
         padding: 0 25px;
         outline: none;
         border: 1px solid #000;

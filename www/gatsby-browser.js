@@ -1,3 +1,4 @@
+import "./src/css/nprogress.css";
 import React from "react";
 import Layout from "./src/components/layout";
 import { StitchProvider } from "./src/contexts/stitch-context";
