@@ -3,13 +3,13 @@ import { Link } from "gatsby";
 import SEO from "../components/seo";
 import { StitchContext } from "../contexts/stitch-context";
 
-const IndexPage = () => {
+const AdminPage = () => {
   const { state } = useContext(StitchContext);
 
   return (
     <div className="container">
-      <SEO title="Gallery" keywords={[`gatsby`, `application`, `react`]} />
-      {state && state.isLoggedIn ? <h1>gallery</h1> : null}
+      <SEO title="Admin" keywords={[`gatsby`, `application`, `react`]} />
+      {state && state.isLoggedIn ? <h1>admin</h1> : null}
       <style jsx>{`
         .container {
           max-width: 990px;
@@ -20,4 +20,4 @@ const IndexPage = () => {
   );
 };
 
-export default IndexPage;
+export default AdminPage;
