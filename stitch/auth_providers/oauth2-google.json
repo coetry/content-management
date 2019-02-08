@@ -1,0 +1,29 @@
+{
+    "id": "5c5ccbfd15bed5829c34151a",
+    "name": "oauth2-google",
+    "type": "oauth2-google",
+    "config": {
+        "clientId": "756173089877-s11ipe8t8538no9koda0b8pqklqtuhfp.apps.googleusercontent.com"
+    },
+    "disabled": false,
+    "metadata_fields": [
+        {
+            "required": true,
+            "name": "name"
+        },
+        {
+            "required": true,
+            "name": "email"
+        },
+        {
+            "required": true,
+            "name": "picture"
+        }
+    ],
+    "redirect_uris": [
+        "http://localhost:8000/",
+        "http://localhost:8000/dashboard/",
+        "https://content-management.now.sh/",
+        "https://content-management.now.sh/dashboard/"
+    ]
+}
