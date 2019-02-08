@@ -38,6 +38,10 @@ const AdminPage = () => {
     }
   };
 
+  const addToGallery = e => {
+    NProgress.start();
+  };
+
   return (
     <div className="container">
       <SEO title="Admin" keywords={[`gatsby`, `application`, `react`]} />
@@ -70,7 +74,7 @@ const AdminPage = () => {
               {img && (
                 <div>
                   <img src={img.url} width={300} />
-                  <Button>submit</Button>
+                  <Button onClick={addToGallery}>add to gallery</Button>
                 </div>
               )}
             </div>
