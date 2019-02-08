@@ -2,12 +2,12 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link, navigate } from "gatsby";
 import SEO from "../components/seo";
 import { StitchContext } from "../contexts/stitch-context";
-import Button from "../components/Button";
+import Button from "../components/button";
 import TextInput from "../components/text-input";
 import NProgress from "nprogress";
 
 const AdminPage = () => {
-  const { state } = useContext(StitchContext);
+  const value = useContext(StitchContext);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [img, setImg] = useState(null);
@@ -36,9 +36,9 @@ const AdminPage = () => {
 
   const addToGallery = e => {
     NProgress.start();
-    state.artifacts
+    value.state.artifacts
       .insertOne({
-        owner_id: state.user.id,
+        owner_id: value.state.user.id,
         title,
         description,
         image_url: img.url
@@ -53,7 +53,7 @@ const AdminPage = () => {
   return (
     <div className="container">
       <SEO title="Admin" keywords={[`gatsby`, `application`, `react`]} />
-      {state && state.isLoggedIn ? (
+      {value && value.state && value.state.isLoggedIn ? (
         <>
           <h1>admin</h1>
           <div className="create-artifact-container">

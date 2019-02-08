@@ -9,7 +9,7 @@ import Avatar from "./avatar";
 export default function Layout({ children }) {
   const value = useContext(StitchContext);
   useEffect(() => {
-    if (value.state) {
+    if (value && value.state) {
       if (value.state.client.auth.hasRedirectResult()) {
         console.log("has redirect result");
         value.state.client.auth.handleRedirectResult().then(user => {
@@ -21,7 +21,7 @@ export default function Layout({ children }) {
   return (
     <>
       <TopNav>
-        {value.state && !value.state.isLoggedIn ? (
+        {value && value.state && !value.state.isLoggedIn ? (
           <div>
             <Lock
               type="sign-in"
@@ -56,7 +56,7 @@ export default function Layout({ children }) {
                     );
                 }}
               />
-              {value.state && value.state.user && (
+              {value && value.state && value.state.user && (
                 <Avatar
                   src={value.state.user.profile.pictureUrl}
                   style={{

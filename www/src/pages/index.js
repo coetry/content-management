@@ -6,27 +6,27 @@ import Button from "../components/button";
 import NProgress from "nprogress";
 
 const IndexPage = () => {
-  const { state } = useContext(StitchContext);
+  const value = useContext(StitchContext);
   const [artifacts, setArtifacts] = useState(null);
 
   useEffect(
     () => {
       console.log(artifacts);
-      if (state && !artifacts) {
-        state.artifacts
-          .find({ owner_id: state.user.id })
+      if (value && value.state && value.state.isLoggedIn && !artifacts) {
+        value.state.artifacts
+          .find({ owner_id: value.state.user.id })
           .toArray()
           .then(docs => setArtifacts(docs));
       }
     },
-    [state, artifacts]
+    [value, artifacts]
   );
 
   const deleteArtifact = id => {
     NProgress.start();
-    if (state) {
+    if (value && value.state) {
       console.log(id);
-      state.artifacts.deleteOne({ _id: id });
+      value.state.artifacts.deleteOne({ _id: id });
       NProgress.done();
       setArtifacts(artifacts.filter(a => a._id != id));
     }
@@ -35,7 +35,7 @@ const IndexPage = () => {
   return (
     <div className="container">
       <SEO title="Gallery" keywords={[`gatsby`, `application`, `react`]} />
-      {state && state.isLoggedIn ? (
+      {value && value.state && value.state.isLoggedIn ? (
         <>
           <h1>gallery</h1>
           <div className="artifacts-container">
