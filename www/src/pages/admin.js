@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "gatsby";
+import { Link, navigate } from "gatsby";
 import SEO from "../components/seo";
 import { StitchContext } from "../contexts/stitch-context";
 import Button from "../components/Button";
@@ -11,10 +11,6 @@ const AdminPage = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [img, setImg] = useState(null);
-
-  useEffect(() => {
-    console.log(NProgress);
-  });
 
   const uploadImage = async e => {
     NProgress.start();
@@ -40,6 +36,18 @@ const AdminPage = () => {
 
   const addToGallery = e => {
     NProgress.start();
+    state.artifacts
+      .insertOne({
+        owner_id: state.user.id,
+        title,
+        description,
+        image_url: img.url
+      })
+      .then(() => {
+        NProgress.done();
+        navigate("/");
+      })
+      .catch(console.error);
   };
 
   return (

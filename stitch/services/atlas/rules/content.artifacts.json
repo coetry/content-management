@@ -1,0 +1,42 @@
+{
+    "id": "5c5d321d399ddbf709bee4d1",
+    "database": "content",
+    "collection": "artifacts",
+    "roles": [
+        {
+            "name": "owner",
+            "apply_when": {
+                "owner_id": "%%user.id"
+            },
+            "fields": {
+                "description": {},
+                "image_url": {},
+                "title": {}
+            },
+            "read": true,
+            "write": true,
+            "insert": true,
+            "delete": true,
+            "additional_fields": {}
+        }
+    ],
+    "schema": {
+        "properties": {
+            "_id": {
+                "bsonType": "objectId"
+            },
+            "owner_id": {
+                "bsonType": "string"
+            },
+            "title": {
+                "bsonType": "string"
+            },
+            "description": {
+                "bsonType": "string"
+            },
+            "image_url": {
+                "bsonType": "string"
+            }
+        }
+    }
+}
