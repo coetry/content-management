@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "gatsby";
 import SEO from "../components/seo";
 import { StitchContext } from "../contexts/stitch-context";
+import Button from "../components/Button";
 import TextInput from "../components/text-input";
 import NProgress from "nprogress";
 
@@ -9,7 +10,7 @@ const AdminPage = () => {
   const { state } = useContext(StitchContext);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [img, setImg] = useState({});
+  const [img, setImg] = useState(null);
 
   useEffect(() => {
     console.log(NProgress);
@@ -43,34 +44,37 @@ const AdminPage = () => {
       {state && state.isLoggedIn ? (
         <>
           <h1>admin</h1>
-
-          <form>
-            <TextInput
-              key={0}
-              id="artifact-title"
-              placeholder="Title"
-              value={title}
-              onChange={e => {
-                setTitle(e.target.value);
-              }}
-            />
-            <TextInput
-              key={1}
-              id="artifact-description"
-              placeholder="description"
-              value={description}
-              onChange={e => {
-                setDescription(e.target.value);
-              }}
-            />
-            <input
-              type="file"
-              placeholder="UPLOAD IMAGE"
-              onChange={uploadImage}
-            />
-          </form>
-
-          {img && <img src={img.url} />}
+          <div className="create-artifact-container">
+            <form>
+              <TextInput
+                key={0}
+                id="artifact-title"
+                placeholder="Title"
+                value={title}
+                onChange={e => {
+                  setTitle(e.target.value);
+                }}
+              />
+              <TextInput
+                key={1}
+                id="artifact-description"
+                placeholder="description"
+                value={description}
+                onChange={e => {
+                  setDescription(e.target.value);
+                }}
+              />
+              <input type="file" onChange={uploadImage} />
+            </form>
+            <div className="preview">
+              {img && (
+                <div>
+                  <img src={img.url} width={300} />
+                  <Button>submit</Button>
+                </div>
+              )}
+            </div>
+          </div>
         </>
       ) : null}
 
@@ -78,6 +82,12 @@ const AdminPage = () => {
         .container {
           max-width: 990px;
           margin: 140px auto 0;
+        }
+        .create-artifact-container {
+          max-width: 900px;
+          margin: 0 auto;
+          display: flex;
+          justify-content: space-even;
         }
         form {
           margin: 20px 0;

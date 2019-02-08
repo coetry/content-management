@@ -5,11 +5,10 @@ const Button = ({ children, ...props }) => (
     {children}
     <style jsx>{`
       button {
-        display: inline-flex;
-        align-items: center;
+        display: block;
+        text-align: center;
         color: #fff;
         background: #000;
-        width: 150px;
         height: 30px;
         padding: 0 25px;
         outline: none;
