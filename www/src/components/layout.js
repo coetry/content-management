@@ -76,16 +76,16 @@ export default function Layout({ children }) {
                     textTransform: "uppercase",
                     marginRight: "10px"
                   }}
-                  activeStyle={{ fontWeight: 700 }}
+                  activeStyle={{ fontWeight: 700, color: "#000" }}
                 >
                   gallery
                 </Link>
                 <Link
-                  to="/admin"
+                  to="/add"
                   style={{ textDecoration: "none", textTransform: "uppercase" }}
-                  activeStyle={{ fontWeight: 700 }}
+                  activeStyle={{ fontWeight: 700, color: "#000" }}
                 >
-                  admin
+                  add
                 </Link>
               </li>
             </ul>
@@ -101,6 +101,14 @@ export default function Layout({ children }) {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
               Helvetica, Arial, sans-serif, "Apple Color Emoji",
               "Segoe UI Emoji", "Segoe UI Symbol";
+          }
+          a,
+          a:visited {
+            color: #999;
+            text-decoration: none;
+          }
+          a:hover {
+            color: #000;
           }
         `}</style>
       </TopNav>

@@ -1,6 +1,7 @@
 {
   "version": 2,
   "name": "content-mangement",
+  "public": true,
   "alias": ["content-management.now.sh"],
   "builds": [
     {

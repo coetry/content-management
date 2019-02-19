@@ -37,7 +37,8 @@ const IndexPage = () => {
       <SEO title="Gallery" keywords={[`gatsby`, `application`, `react`]} />
       {value && value.state && value.state.isLoggedIn ? (
         <>
-          <h1>gallery</h1>
+          <h3>gallery</h3>
+          <p>below is a gallery of images you uploaded</p>
           <div className="artifacts-container">
             {artifacts &&
               artifacts.map(a => (
@@ -55,7 +56,12 @@ const IndexPage = () => {
           display: flex;
         }
         .artifact {
-          margin: 30px;
+        }
+        h3 {
+          text-transform: uppercase;
+        }
+        p {
+          line-height: 1.5;
         }
       `}</style>
     </div>

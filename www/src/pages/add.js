@@ -6,7 +6,7 @@ import Button from "../components/button";
 import TextInput from "../components/text-input";
 import NProgress from "nprogress";
 
-const AdminPage = () => {
+const AddPage = () => {
   const value = useContext(StitchContext);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -52,10 +52,11 @@ const AdminPage = () => {
 
   return (
     <div className="container">
-      <SEO title="Admin" keywords={[`gatsby`, `application`, `react`]} />
+      <SEO title="Add" keywords={[`gatsby`, `application`, `react`]} />
       {value && value.state && value.state.isLoggedIn ? (
         <>
-          <h1>admin</h1>
+          <h3>add</h3>
+          <p> upload an image to add to your gallery </p>
           <div className="create-artifact-container">
             <form>
               <TextInput
@@ -70,7 +71,7 @@ const AdminPage = () => {
               <TextInput
                 key={1}
                 id="artifact-description"
-                placeholder="description"
+                placeholder="Description"
                 value={description}
                 onChange={e => {
                   setDescription(e.target.value);
@@ -104,9 +105,15 @@ const AdminPage = () => {
         form {
           margin: 20px 0;
         }
+        h3 {
+          text-transform: uppercase;
+        }
+        p {
+          line-height: 1.5;
+        }
       `}</style>
     </div>
   );
 };
 
-export default AdminPage;
+export default AddPage;

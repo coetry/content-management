@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "content-management",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "A severless content-management demo using MongoDB Stitch and Gatsby",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Allen Hai <allenhai03@gmail.com>",
   "dependencies": {
     "gatsby": "^2.0.117",
     "gatsby-image": "^2.0.29",
@@ -23,7 +23,9 @@
     "styled-jsx": "^3.2.0"
   },
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "mongodb",
+    "stitch"
   ],
   "license": "MIT",
   "scripts": {
@@ -33,12 +35,5 @@
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
     "now-build": "npm run build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
 }
