@@ -116,9 +116,9 @@ Let's open up `src/pages/index.js` and start with our imports:
 ```jsx
 import React, { useState, useEffect } from "react";
 import {
-	Stitch,
-	RemoteMongoClient,
-	GoogleRedirectCredential
+  Stitch,
+  RemoteMongoClient,
+  GoogleRedirectCredential
 } from "mongodb-stitch-browser-sdk";
 ```
 
@@ -134,28 +134,28 @@ the data changes:
 
 ```jsx
 const IndexPage = () => {
-	const [stitch, setStitch] = useState({
-		client: null,
-		db: null,
-		thoughtsCollection: null
-	});
+  const [stitch, setStitch] = useState({
+    client: null,
+    db: null,
+    thoughtsCollection: null
+  });
 
-	const [user, setUser] = useState({
-		data: null,
-		isLoggedIn: false
-	});
+  const [user, setUser] = useState({
+    data: null,
+	isLoggedIn: false
+  });
 
-	const [thoughts, setThoughts] = useState(null);
+  const [thoughts, setThoughts] = useState(null);
 
-	const [newThought, setNewThought] = useState("");
+  const [newThought, setNewThought] = useState("");
 
-	const [status, setStatus] = useState({
-		sending: false,
-		success: false,
-		error: false
-	});
+  const [status, setStatus] = useState({
+    sending: false,
+	success: false,
+	error: false
+  });
 
-	return <div>Hello World</div>;
+  return <div>Hello World</div>;
 };
 ```
 
@@ -178,23 +178,22 @@ APIs in our `useEffect` [hook](https://reactjs.org/docs/hooks-intro.html):
 
 ```js
 useEffect(() => {
-	if (!stitch.client) {
-		const client = Stitch.initializeAppClient("APP_ID");
-		const db = client
-			.getServiceClient(RemoteMongoClient.factory, "mongodb-atlas")
-			.db("thought-log");
+  if (!stitch.client) {
+    const client = Stitch.initializeAppClient("APP_ID");
+    const db = client
+	  .getServiceClient(RemoteMongoClient.factory, "mongodb-atlas")
+	  .db("thought-log");
 
-		const thoughtsCollection = db.collection("thoughts");
+	const thoughtsCollection = db.collection("thoughts");
+	setStitch({ client, db, thoughtsCollection });
+  }
 
-		setStitch({ client, db, thoughtsCollection });
-	}
-
-	if (stitch.client && stitch.client.auth.hasRedirectResult()) {
-		stitch.client.auth.handleRedirectResult().then(user => {
-			setUser({ data: user.profile.data, isLoggedIn: true });
-			console.log(user);
-		});
-	}
+  if (stitch.client && stitch.client.auth.hasRedirectResult()) {
+    stitch.client.auth.handleRedirectResult().then(user => {
+	  setUser({ data: user.profile.data, isLoggedIn: true });
+	  console.log(user);
+	});
+  }
 }, [stitch, user]);
 ```
 
@@ -209,23 +208,23 @@ Let's have our component return a login button if the user is not logged in, and
 
 ```jsx
 return (
-	<div>
-		{user.isLoggedIn ? (
-			<>
-				<h1>Hi {user.data.first_name}</h1>
-				<form>
-					<label> new thought</label>
-					<input
-						name='new-thought'
-						value={newThought}
-						onChange={e => setNewThought(e.target.value)}
-					/>
-					<button onClick={createNewThought}>create</button>
-				</form>
-			</>
-		) : (
-			<h1 onClick={login}>login</h1>
-		)}
-	</div>
+  <div>
+    {user.isLoggedIn ? (
+      <>
+	    <h1>Hi {user.data.first_name}</h1>
+		<form>
+		  <label> new thought</label>
+		  <input
+		    name='new-thought'
+			value={newThought}
+			onChange={e => setNewThought(e.target.value)}
+		  />
+		  <button onClick={createNewThought}>create</button>
+		</form>
+	  </>
+    ) : (
+	  <h1 onClick={login}>login</h1>
+   )}
+  </div>
 );
 ```
